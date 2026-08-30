@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180">
+  <g fill="none" stroke="#B8936B" stroke-opacity="0.45" stroke-width="1">
+    <line x1="40" y1="55" x2="300" y2="55"/>
+    <line x1="40" y1="65" x2="300" y2="65"/>
+    <line x1="40" y1="75" x2="300" y2="75"/>
+    <line x1="40" y1="85" x2="300" y2="85"/>
+    <line x1="40" y1="95" x2="300" y2="95"/>
+  </g>
+  <ellipse cx="80" cy="90" rx="6.5" ry="3.8" fill="#B8936B" fill-opacity="0.65"/>
+  <line x1="75.5" y1="90" x2="75.5" y2="60" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <line x1="75.5" y1="60" x2="65" y2="56" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <ellipse cx="122" cy="80" rx="6.5" ry="3.8" fill="#B8936B" fill-opacity="0.65"/>
+  <line x1="117.5" y1="80" x2="117.5" y2="50" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <line x1="117.5" y1="50" x2="107" y2="46" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <ellipse cx="164" cy="70" rx="6.5" ry="3.8" fill="#B8936B" fill-opacity="0.65"/>
+  <line x1="168.5" y1="70" x2="168.5" y2="100" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <line x1="168.5" y1="100" x2="179" y2="104" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <ellipse cx="206" cy="55" rx="6.5" ry="3.8" fill="#B8936B" fill-opacity="0.65"/>
+  <line x1="210.5" y1="55" x2="210.5" y2="85" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <line x1="210.5" y1="85" x2="221" y2="89" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <ellipse cx="248" cy="70" rx="6.5" ry="3.8" fill="#B8936B" fill-opacity="0.65"/>
+  <line x1="252.5" y1="70" x2="252.5" y2="100" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <line x1="252.5" y1="100" x2="263" y2="104" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <ellipse cx="290" cy="80" rx="6.5" ry="3.8" fill="#B8936B" fill-opacity="0.65"/>
+  <line x1="285.5" y1="80" x2="285.5" y2="50" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+  <line x1="285.5" y1="50" x2="275" y2="46" stroke="#B8936B" stroke-opacity="0.65" stroke-width="1.2"/>
+</svg>
