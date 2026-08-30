@@ -1,0 +1,887 @@
+/* ============================================================
+   Personal Site — Warm Minimal · Champagne Gold · Serif Elegance
+   Palette: 暖白 #FAF8F4 / 墨色 #2A2A28 / 香槟金 #B8936B
+   ============================================================ */
+
+:root {
+  --paper: #FAF8F4;
+  --paper-deep: #F1ECE3;
+  --ink: #2A2A28;
+  --ink-soft: #5C5A55;
+  --gold: #B8936B;
+  --gold-deep: #A07E58;
+  --line: rgba(184, 147, 107, 0.35);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: rgba(184, 147, 107, 0.25); }
+
+/* 细金滚动条 */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--gold), var(--gold-deep));
+  border-radius: 5px;
+  border: 2px solid var(--paper);
+}
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+/* ---------- 顶部导航：雷厉风行，常驻 ---------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 248, 244, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.nav-links { display: flex; align-items: center; gap: 38px; }
+
+.nav-links a {
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  color: var(--ink-soft);
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.nav-links a:hover { color: var(--ink); border-color: var(--gold); }
+
+.nav-links a.active { color: var(--ink); border-color: var(--gold); }
+
+.nav-cta {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  border: 1px solid var(--gold);
+  padding: 7px 22px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-cta:hover { background: var(--gold); color: var(--paper); }
+
+/* ---------- 通用区块 ---------- */
+
+section { padding: 52px 0; }
+
+.section-head {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-title {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+  margin-bottom: 26px;
+}
+
+.gold-line {
+  width: 64px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold) 75%, transparent);
+  margin: 0 auto;
+}
+
+.section-sub {
+  margin-top: 20px;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+}
+
+/* ---------- 五线谱与谱号装饰 ---------- */
+
+.staff {
+  height: 1px;
+  background: transparent;
+  position: relative;
+  margin: 0 auto;
+}
+
+.staff::before,
+.staff::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  background: var(--line);
+}
+
+.staff::before { width: 240px; top: -12px; box-shadow: 0 6px 0 var(--line), 0 12px 0 var(--line), 0 18px 0 var(--line), 0 24px 0 var(--line); }
+
+.staff::after { width: 80px; top: 42px; background: var(--gold); }
+
+/* 高音谱号水印 */
+
+.clef-watermark {
+  position: relative;
+}
+
+.clef-watermark::before {
+  content: "\1D11E";
+  position: absolute;
+  right: 0;
+  top: 30px;
+  font-size: 320px;
+  line-height: 1;
+  color: rgba(184, 147, 107, 0.06);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ---------- 第一屏：名字 · 金线 · 定位 · 大图 ---------- */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 140px 0 90px;
+  text-align: center;
+  position: relative;
+  background: url("../images/hero.jpg") 50% 40% / cover no-repeat;
+  color: var(--paper);
+}
+
+/* 极浅暗罩：只保证文字可读，不压脸部细节 */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.28));
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-name {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 600;
+  font-size: clamp(64px, 9.5vw, 112px);
+  letter-spacing: 0.1em;
+  line-height: 1.05;
+  color: var(--paper);
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55);
+  animation: fadeUp 0.9s ease both;
+}
+
+.hero-rule {
+  width: 56px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold) 75%, transparent);
+  margin: 40px auto;
+  animation: fadeUp 0.9s ease 0.18s both;
+}
+
+.hero-tagline {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  padding-left: 0.5em;
+  color: rgba(250, 248, 244, 0.85);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+  display: inline-flex;
+  align-items: center;
+  gap: 26px;
+  animation: fadeUp 0.9s ease 0.36s both;
+}
+
+.hero-tagline::before,
+.hero-tagline::after {
+  content: "";
+  width: 56px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+  flex: none;
+}
+
+.hero-tagline::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* 滚动提示 */
+.hero-scroll {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  width: 1px;
+  height: 46px;
+  background: linear-gradient(180deg, rgba(250, 248, 244, 0.7), transparent);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: translateY(0); opacity: 0.85; }
+  50% { transform: translateY(8px); opacity: 0.25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-name, .hero-rule, .hero-tagline { animation: none; }
+  .hero-scroll { animation: none; }
+}
+
+
+/* ---------- 照片墙 ---------- */
+
+.photo-wall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "a a b"
+    "q q q"
+    "qa qa qa"
+    "c d e"
+    "q2 q2 q2"
+    "q2a q2a q2a"
+    "f g g";
+  row-gap: 18px;
+  column-gap: 22px;
+}
+
+.photo-wall .frame:first-child { aspect-ratio: 16 / 9; }
+
+.area-a { grid-area: a; }
+.area-b { grid-area: b; }
+.area-c { grid-area: c; }
+.area-d { grid-area: d; }
+.area-e { grid-area: e; }
+.area-f { grid-area: f; }
+.area-g { grid-area: g; }
+.area-q { grid-area: q; margin-top: 30px; }
+.area-qa { grid-area: qa; margin-bottom: 24px; }
+.area-q2 { grid-area: q2; margin-top: 30px; }
+.area-q2a { grid-area: q2a; margin-bottom: 24px; }
+
+.frame {
+  position: relative;
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  color: var(--ink-soft);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  transition: border-color 0.3s;
+  overflow: hidden;
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.frame:hover { border-color: var(--gold); }
+
+.frame:hover img {
+  transform: scale(1.03);
+  filter: brightness(1.06);
+}
+
+/* 首页大图位 */
+.big-photo {
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.big-photo:hover { border-color: var(--gold); }
+
+.big-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.big-photo.wide {
+  aspect-ratio: 3 / 2;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.big-photo.tall {
+  width: min(560px, 100%);
+  aspect-ratio: 3 / 4;
+  margin: 0 auto;
+}
+
+.big-caption {
+  text-align: center;
+  margin-top: 34px;
+  font-size: 14px;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  color: var(--ink-soft);
+}
+
+/* 首页自我介绍段 */
+.intro-block {
+  max-width: 620px;
+  margin: 44px auto 0;
+  text-align: center;
+  font-size: 15px;
+  line-height: 2.2;
+  color: var(--ink-soft);
+}
+
+/* 联系区荣誉锚点 */
+.honor-line {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--gold-deep);
+  margin-bottom: 20px;
+}
+
+/* 名句（图片间的呼吸） */
+.quote {
+  text-align: center;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(19px, 2.4vw, 27px);
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  color: var(--ink);
+  margin-top: 32px;
+}
+
+.quote-author {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  color: var(--gold-deep);
+  margin-top: 10px;
+}
+
+/* 名句独立屏（图片间的呼吸带） */
+.quote-screen {
+  padding: 110px 0;
+}
+
+.quote-screen .quote {
+  font-size: clamp(24px, 3.2vw, 36px);
+  margin-top: 44px;
+}
+
+.quote-screen .quote-author {
+  margin-bottom: 44px;
+}
+
+/* 教学场景双图 */
+.teaching-scenes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  margin-bottom: 100px;
+}
+
+.teaching-scenes .frame { aspect-ratio: 3 / 2; }
+
+/* ---------- 教学主张 ---------- */
+
+.teaching {
+  background: var(--paper-deep);
+}
+
+.teaching-statement {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-weight: 500;
+  font-size: clamp(22px, 3.4vw, 32px);
+  line-height: 2;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 80px;
+}
+
+/* 首页第三屏：纯文字主张，无配图，字号加大撑起一屏 */
+.teaching-statement--hero {
+  font-size: clamp(28px, 4.4vw, 44px);
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.teaching-photo {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  aspect-ratio: 3 / 2;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-size: 14px;
+  letter-spacing: 0.3em;
+}
+
+/* ---------- 作品卡片 ---------- */
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px;
+}
+
+.work-card {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.work-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 18px 40px rgba(184, 147, 107, 0.12);
+}
+
+.work-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--paper-deep);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+  letter-spacing: 0.26em;
+  overflow: hidden;
+}
+
+.work-thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.play-mark {
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(250, 248, 244, 0.85);
+  transition: background 0.3s;
+}
+
+.play-mark svg { width: 14px; height: 14px; fill: var(--gold); }
+
+.work-card:hover .play-mark { background: var(--gold); }
+
+.work-card:hover .play-mark svg { fill: var(--paper); }
+
+.work-info { padding: 24px 26px 26px; }
+
+.work-title {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+}
+
+.work-meta {
+  margin-top: 8px;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  color: var(--gold-deep);
+}
+
+/* ---------- 首页代表作品（单件压轴） ---------- */
+
+.featured-work {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  transition: border-color 0.3s;
+}
+
+.featured-work:hover { border-color: var(--gold); }
+
+.featured-info {
+  margin-top: 46px;
+  text-align: center;
+}
+
+.featured-title {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(26px, 3.4vw, 38px);
+  letter-spacing: 0.05em;
+}
+
+.featured-meta {
+  margin-top: 10px;
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  color: var(--gold-deep);
+}
+
+.featured-link {
+  display: inline-block;
+  margin-top: 40px;
+  border: 1px solid var(--gold);
+  padding: 12px 40px;
+  font-size: 13px;
+  letter-spacing: 0.26em;
+  text-indent: 0.26em;
+  transition: background 0.3s, color 0.3s;
+}
+
+.featured-link:hover { background: var(--gold); color: var(--paper); }
+
+/* ---------- 联系方式 ---------- */
+
+.contact {
+  text-align: center;
+}
+
+.contact-line {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  margin-bottom: 48px;
+}
+
+.contact-btn {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  padding: 14px 46px;
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  transition: background 0.3s, color 0.3s;
+}
+
+.contact-btn:hover { background: var(--gold); color: var(--paper); }
+
+.contact-mail {
+  margin-top: 26px;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+}
+
+/* ---------- 页脚 ---------- */
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 60px 0 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "\1D11E";
+  position: absolute;
+  left: 50%;
+  top: -30px;
+  transform: translateX(-50%);
+  font-size: 240px;
+  line-height: 1;
+  color: rgba(184, 147, 107, 0.06);
+  pointer-events: none;
+}
+
+.footer-copy {
+  position: relative;
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  color: var(--ink-soft);
+}
+
+/* 页脚旋律五线谱 */
+.footer-score {
+  width: min(340px, 78%);
+  margin: 0 auto 56px;
+  display: block;
+}
+
+/* ---------- 内页共用 ---------- */
+
+.page-hero {
+  padding: 130px 0 70px;
+  text-align: center;
+}
+
+.page-title {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-weight: 600;
+  font-size: clamp(30px, 4.5vw, 42px);
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  margin-bottom: 30px;
+}
+
+.page-intro {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* ---------- 资源页 ---------- */
+
+.resource-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 110px;
+}
+
+.resource-card {
+  border: 1px solid var(--line);
+  padding: 38px 34px;
+  transition: border-color 0.3s;
+}
+
+.resource-card:hover { border-color: var(--gold); }
+
+.resource-icon {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--gold-deep);
+  margin-bottom: 24px;
+}
+
+.resource-title {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.resource-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+
+.resource-link {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 3px;
+}
+
+/* 抖音跳转链接 */
+.dy-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  border: 1px solid var(--gold);
+  padding: 6px 16px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dy-link:hover { background: var(--gold); color: var(--paper); }
+
+.paper-list {
+  border-top: 1px solid var(--line);
+}
+
+.paper-item {
+  padding: 34px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.paper-title {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 500;
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.paper-abstract {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+
+/* ---------- 关于页 ---------- */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 440px minmax(0, 420px);
+  justify-content: center;
+  gap: 80px;
+}
+
+.about-bio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-photo {
+  aspect-ratio: 3 / 4;
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-bio { font-size: 16px; }
+
+.about-bio p + p { margin-top: 18px; }
+
+.awards {
+  margin-top: 90px;
+}
+
+.awards-title {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 0.26em;
+  text-indent: 0.26em;
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.award-item {
+  display: flex;
+  align-items: baseline;
+  gap: 34px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.award-year {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  color: var(--gold-deep);
+  min-width: 90px;
+}
+
+/* 证书画廊 */
+.award-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 70px;
+}
+
+.award-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  transition: border-color 0.3s;
+}
+
+.award-gallery img:hover { border-color: var(--gold); }
+
+.award-name {
+  font-size: 15px;
+  letter-spacing: 0.1em;
+}
+
+/* ---------- 响应式 ---------- */
+
+@media (max-width: 900px) {
+  .nav-inner { flex-direction: column; gap: 16px; }
+  .nav-links { gap: 24px; }
+  section { padding: 64px 0; }
+  .photo-wall { grid-template-columns: 1fr; }
+  .photo-wall .frame:first-child { grid-column: span 1; }
+  .works-grid { grid-template-columns: 1fr; }
+  .resource-row { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .award-item { gap: 20px; }
+}
