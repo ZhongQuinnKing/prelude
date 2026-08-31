@@ -8,10 +8,10 @@ window.addEventListener('scroll', function () {
   }
 });
 
-// hero 文字动画：等页面完全加载后再播放，避免网络慢时动画在后台播完
-// 4 秒兜底：即使资源没加载完也触发，防止文字一直隐藏
+// hero 文字动画：DOM 解析完立即播放，不等图片下载（慢网不卡不延迟）
+// 800ms 兜底：即使 DOMContentLoaded 异常未触发也开播，防止文字一直隐藏
 function playHeroAnim() {
   document.documentElement.classList.remove('pre-anim');
 }
-window.addEventListener('load', playHeroAnim);
-setTimeout(playHeroAnim, 4000);
+document.addEventListener('DOMContentLoaded', playHeroAnim);
+setTimeout(playHeroAnim, 800);
