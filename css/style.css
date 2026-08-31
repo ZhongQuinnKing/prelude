@@ -1189,6 +1189,12 @@ html:not(.pre-anim) .page-hero--photo .gold-line:last-of-type {
   min-width: 90px;
 }
 
+/* 图片占位：加载中显示纸色底，避免空白闪烁 */
+img {
+  background-color: var(--paper-deep);
+}
+img[src$=".svg"] { background-color: transparent; }
+
 /* 证书画廊 */
 .award-gallery {
   display: grid;
