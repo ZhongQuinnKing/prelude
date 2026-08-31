@@ -97,6 +97,124 @@ img { max-width: 100%; display: block; }
 
 .nav-cta:hover { background: var(--gold); color: var(--paper); }
 
+/* 滚动后导航浮现暖白背景（site.js 切换 nav-solid） */
+.nav-solid {
+  background: rgba(250, 248, 244, 0.92);
+  border-bottom-color: var(--line);
+}
+
+.nav-solid a { color: var(--ink-soft); }
+
+.nav-solid a:hover { color: var(--ink); border-color: var(--gold); }
+
+.nav-solid a.active { color: var(--ink); border-color: var(--gold); }
+
+.nav-solid .nav-cta {
+  color: var(--ink);
+  border-color: var(--gold);
+}
+
+.nav-solid .nav-cta:hover { background: var(--gold); color: var(--paper); }
+
+.nav-solid .brand { color: var(--ink); }
+
+/* 作品页：首屏导航深色毛玻璃，白字压照片，滚动后浮现 */
+.photo-nav.photo-nav--warm .nav {
+  background: rgba(58, 32, 14, 0.38);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom-color: transparent;
+}
+
+.photo-nav.photo-nav--warm .nav a {
+  color: rgba(250, 248, 244, 0.95);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.photo-nav.photo-nav--warm .nav a:hover { color: var(--paper); border-color: rgba(250, 248, 244, 0.6); }
+
+.photo-nav.photo-nav--warm .nav a.active { color: var(--paper); border-color: rgba(250, 248, 244, 0.6); }
+
+.photo-nav.photo-nav--warm .nav .nav-cta {
+  color: var(--paper);
+  border-color: rgba(250, 248, 244, 0.7);
+}
+
+.photo-nav.photo-nav--warm .nav .nav-cta:hover { background: var(--gold); color: var(--paper); }
+
+.photo-nav.photo-nav--warm .nav .brand {
+  color: var(--paper);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+}
+
+.photo-nav.photo-nav--warm .nav.nav-solid {
+  background: rgba(250, 248, 244, 0.92);
+  border-bottom-color: var(--line);
+}
+
+.photo-nav.photo-nav--warm .nav.nav-solid a { color: var(--ink-soft); }
+
+.photo-nav.photo-nav--warm .nav.nav-solid a:hover { color: var(--ink); border-color: var(--gold); }
+
+.photo-nav.photo-nav--warm .nav.nav-solid a.active { color: var(--ink); border-color: var(--gold); }
+
+.photo-nav.photo-nav--warm .nav.nav-solid .nav-cta {
+  color: var(--ink);
+  border-color: var(--gold);
+}
+
+.photo-nav.photo-nav--warm .nav.nav-solid .nav-cta:hover { background: var(--gold); color: var(--paper); }
+
+.photo-nav.photo-nav--warm .nav.nav-solid .brand { color: var(--ink); }
+
+.photo-nav .nav {
+  background: rgba(12, 12, 10, 0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom-color: transparent;
+}
+
+.photo-nav .nav a {
+  color: rgba(250, 248, 244, 0.95);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+}
+
+.photo-nav .nav a:hover { color: var(--paper); border-color: rgba(250, 248, 244, 0.6); }
+
+.photo-nav .nav a.active { color: var(--paper); border-color: rgba(250, 248, 244, 0.6); }
+
+.photo-nav .nav .nav-cta {
+  color: var(--paper);
+  border-color: rgba(250, 248, 244, 0.7);
+}
+
+.photo-nav .nav .nav-cta:hover { background: var(--gold); color: var(--paper); }
+
+.photo-nav .nav .brand {
+  color: var(--paper);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+}
+
+.photo-nav .nav.nav-solid {
+  background: rgba(250, 248, 244, 0.92);
+  border-bottom-color: var(--line);
+}
+
+.photo-nav .nav.nav-solid a { color: var(--ink-soft); }
+
+.photo-nav .nav.nav-solid a:hover { color: var(--ink); border-color: var(--gold); }
+
+.photo-nav .nav.nav-solid a.active { color: var(--ink); border-color: var(--gold); }
+
+.photo-nav .nav.nav-solid .nav-cta {
+  color: var(--ink);
+  border-color: var(--gold);
+}
+
+.photo-nav .nav.nav-solid .nav-cta:hover { background: var(--gold); color: var(--paper); }
+
+.photo-nav .nav.nav-solid .brand { color: var(--ink); }
+
 /* ---------- 通用区块 ---------- */
 
 section { padding: 52px 0; }
@@ -199,7 +317,7 @@ section { padding: 52px 0; }
   z-index: 2;
 }
 
-.hero-name {
+html:not(.pre-anim) .hero-name {
   font-family: "Cormorant Garamond", "Times New Roman", serif;
   font-weight: 600;
   font-size: clamp(64px, 9.5vw, 112px);
@@ -207,18 +325,18 @@ section { padding: 52px 0; }
   line-height: 1.05;
   color: var(--paper);
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55);
-  animation: fadeUp 0.9s ease both;
+  animation: fadeUp 1.6s ease both;
 }
 
-.hero-rule {
+html:not(.pre-anim) .hero-rule {
   width: 56px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold) 75%, transparent);
   margin: 40px auto;
-  animation: fadeUp 0.9s ease 0.18s both;
+  animation: fadeUp 1.6s ease 0.35s both;
 }
 
-.hero-tagline {
+html:not(.pre-anim) .hero-tagline {
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.5em;
@@ -228,7 +346,7 @@ section { padding: 52px 0; }
   display: inline-flex;
   align-items: center;
   gap: 26px;
-  animation: fadeUp 0.9s ease 0.36s both;
+  animation: fadeUp 1.6s ease 0.7s both;
 }
 
 .hero-tagline::before,
@@ -266,11 +384,92 @@ section { padding: 52px 0; }
   50% { transform: translateY(8px); opacity: 0.25; }
 }
 
+/* 页面加载完成前隐藏 hero 文字，加载完由 JS 移除该类触发动画，保证动画每次都能看到 */
+.pre-anim .hero-name,
+.pre-anim .hero-rule,
+.pre-anim .hero-tagline,
+.pre-anim .page-hero--photo .page-title,
+.pre-anim .page-hero--photo .gold-line,
+.pre-anim .page-hero--photo .quote,
+.pre-anim .page-hero--photo .quote-author,
+.pre-anim .page-hero--photo .quote-cn,
+.pre-anim .page-hero--clef::before,
+.pre-anim .page-hero--clef .page-title,
+.pre-anim .page-hero--clef .gold-line,
+.pre-anim .page-hero--clef .page-intro { opacity: 0; }
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-name, .hero-rule, .hero-tagline { animation: none; }
+  .pre-anim .hero-name,
+  .pre-anim .hero-rule,
+  .pre-anim .hero-tagline,
+  .pre-anim .page-hero--photo .page-title,
+  .pre-anim .page-hero--photo .gold-line,
+  .pre-anim .page-hero--photo .quote,
+  .pre-anim .page-hero--photo .quote-author,
+  .pre-anim .page-hero--photo .quote-cn,
+  .pre-anim .page-hero--clef::before,
+  .pre-anim .page-hero--clef .page-title,
+  .pre-anim .page-hero--clef .gold-line,
+  .pre-anim .page-hero--clef .page-intro { opacity: 1; }
+  html:not(.pre-anim) .hero-name,
+  html:not(.pre-anim) .hero-rule,
+  html:not(.pre-anim) .hero-tagline,
+  html:not(.pre-anim) .page-hero--photo .page-title,
+  html:not(.pre-anim) .page-hero--photo .gold-line,
+  html:not(.pre-anim) .page-hero--photo .quote,
+  html:not(.pre-anim) .page-hero--photo .quote-author,
+  html:not(.pre-anim) .page-hero--photo .quote-cn,
+  html:not(.pre-anim) .page-hero--photo .gold-line:last-of-type,
+  html:not(.pre-anim) .page-hero--clef .page-title span,
+  html:not(.pre-anim) .page-hero--clef .gold-line,
+  html:not(.pre-anim) .page-hero--clef .page-intro { animation: none; }
+  html:not(.pre-anim) .page-hero--clef::before { opacity: 1; animation: none; }
+  html:not(.pre-anim) .page-hero--clef .page-title span { opacity: 1; }
   .hero-scroll { animation: none; }
 }
 
+
+/* ---------- 第二主角：演奏大图（画廊装裱式） ---------- */
+
+.main-shot {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+/* 画框：内层留白 + 细金边，如裱画 */
+.main-shot-frame {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 22px;
+  transition: border-color 0.3s;
+}
+
+.main-shot-frame img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.main-shot-frame:hover { border-color: var(--gold); }
+
+.main-shot-frame:hover img { transform: scale(1.02); }
+
+/* 展签：金线 + 罗马数字小字 */
+.main-shot-caption {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.caption-text {
+  margin-top: 16px;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 13px;
+  letter-spacing: 0.52em;
+  text-indent: 0.52em;
+  color: var(--gold-deep);
+}
 
 /* ---------- 照片墙 ---------- */
 
@@ -284,7 +483,7 @@ section { padding: 52px 0; }
     "c d e"
     "q2 q2 q2"
     "q2a q2a q2a"
-    "f g g";
+    "f g .";
   row-gap: 18px;
   column-gap: 22px;
 }
@@ -410,6 +609,16 @@ section { padding: 52px 0; }
   margin-top: 10px;
 }
 
+/* 名句中文释义 */
+.quote-cn {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: var(--ink-soft);
+  margin-top: 10px;
+}
+
 /* 名句独立屏（图片间的呼吸带） */
 .quote-screen {
   padding: 110px 0;
@@ -480,6 +689,9 @@ section { padding: 52px 0; }
   gap: 34px;
 }
 
+/* 双列作品网格（桌面双卡占满，手机仍单列） */
+.works-grid--2 { grid-template-columns: repeat(2, 1fr); }
+
 .work-card {
   border: 1px solid var(--line);
   background: var(--paper);
@@ -548,6 +760,15 @@ section { padding: 52px 0; }
   font-size: 13px;
   letter-spacing: 0.22em;
   color: var(--gold-deep);
+}
+
+/* 作品卡描述 */
+.work-desc {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
 }
 
 /* ---------- 首页代表作品（单件压轴） ---------- */
@@ -673,8 +894,127 @@ section { padding: 52px 0; }
 /* ---------- 内页共用 ---------- */
 
 .page-hero {
-  padding: 130px 0 70px;
+  padding: 70px 0 54px;
   text-align: center;
+}
+
+/* 谱号水印页首：巨大淡金高音谱号衬在标题正后方 */
+.page-hero--clef {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 66px;
+}
+
+.page-hero--clef::before {
+  content: "\1D11E";
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -60%);
+  font-size: 360px;
+  line-height: 1;
+  color: rgba(184, 147, 107, 0.08);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+html:not(.pre-anim) .page-hero--clef::before {
+  opacity: 0;
+  animation: clefAppear 2.4s ease-out 0.15s both;
+}
+
+@keyframes clefAppear {
+  from { opacity: 0; transform: translate(-50%, -60%) scale(0.97); }
+  to { opacity: 1; transform: translate(-50%, -60%) scale(1); }
+}
+
+.page-hero--clef > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 谱页专属入场：标题逐字渐显（方向各异）、金线生长、小字收尾 */
+html:not(.pre-anim) .page-hero--clef .page-title span {
+  opacity: 0;
+  animation: fadeUp 1.3s ease 0.35s both;
+}
+
+html:not(.pre-anim) .page-hero--clef .page-title span.d2 {
+  opacity: 0;
+  animation: fadeInRight 1.3s ease 1s both;
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+html:not(.pre-anim) .page-hero--clef .gold-line {
+  transform-origin: center;
+  animation: goldGrow 1.1s cubic-bezier(0.4, 0, 0.2, 1) 1.6s both;
+}
+
+@keyframes goldGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+html:not(.pre-anim) .page-hero--clef .page-intro {
+  animation: fadeUp 1.1s ease 1.9s both;
+}
+
+/* 带背景图的内页页首（作品页） */
+.page-hero--photo {
+  background: url("../images/main-1.jpg") 50% 35% / cover no-repeat;
+  padding: 190px 0 120px;
+  position: relative;
+}
+
+.page-hero--photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.28) 32%, rgba(0, 0, 0, 0.55));
+  z-index: 0;
+}
+
+.page-hero--photo > * {
+  position: relative;
+  z-index: 1;
+}
+
+html:not(.pre-anim) .page-hero--photo .page-title {
+  color: var(--paper);
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55);
+  animation: fadeUp 1.6s ease both;
+}
+
+html:not(.pre-anim) .page-hero--photo .gold-line {
+  animation: fadeUp 1.6s ease 0.35s both;
+}
+
+/* 背景图上的名句：浅色保证可读，入场阶梯放慢 */
+html:not(.pre-anim) .page-hero--photo .quote {
+  color: var(--paper);
+  margin-top: 40px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+  animation: fadeUp 1.6s ease 0.7s both;
+}
+
+html:not(.pre-anim) .page-hero--photo .quote-author {
+  color: var(--gold);
+  margin-top: 14px;
+  animation: fadeUp 1.6s ease 1.05s both;
+}
+
+html:not(.pre-anim) .page-hero--photo .quote-cn {
+  color: rgba(250, 248, 244, 0.85);
+  margin-top: 12px;
+  animation: fadeUp 1.6s ease 1.4s both;
+}
+
+html:not(.pre-anim) .page-hero--photo .gold-line:last-of-type {
+  animation: fadeUp 1.6s ease 1.75s both;
 }
 
 .page-title {
@@ -878,8 +1218,21 @@ section { padding: 52px 0; }
   .nav-inner { flex-direction: column; gap: 16px; }
   .nav-links { gap: 24px; }
   section { padding: 64px 0; }
-  .photo-wall { grid-template-columns: 1fr; }
-  .photo-wall .frame:first-child { grid-column: span 1; }
+  .photo-wall {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "a"
+      "b"
+      "q"
+      "qa"
+      "c"
+      "d"
+      "e"
+      "q2"
+      "q2a"
+      "f"
+      "g";
+  }
   .works-grid { grid-template-columns: 1fr; }
   .resource-row { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
