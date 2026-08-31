@@ -300,6 +300,7 @@ section { padding: 52px 0; }
   text-align: center;
   position: relative;
   background: url("../images/hero.jpg") 50% 40% / cover no-repeat;
+  background-color: var(--ink);
   color: var(--paper);
 }
 
