@@ -6,27 +6,29 @@
   <title>乐章 · FRANZ ZHONG</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="css/style.css?v=18">
+  <script>document.documentElement.classList.add('pre-anim');</script>
 </head>
 <body>
 
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="brand">FRANZ ZHONG</a>
+      <a href="overture.html" class="brand">FRANZ ZHONG</a>
       <div class="nav-links">
-        <a href="index.html">序曲</a>
-        <a href="works.html">作品</a>
-        <a href="teaching.html">授业</a>
-        <a href="about.html" class="active">乐章</a>
-        <a href="about.html#contact" class="nav-cta">联系我</a>
+        <a href="overture.html">序曲</a>
+        <a href="opus.html">作品</a>
+        <a href="maestro.html">授业</a>
+        <a href="movement.html" class="active">乐章</a>
+        <a href="movement.html#contact" class="nav-cta">联系我</a>
       </div>
     </div>
   </nav>
 
-  <header class="page-hero">
+  <header class="page-hero page-hero--clef">
     <div class="container">
-      <h1 class="page-title">乐章</h1>
+      <h1 class="page-title"><span>乐</span><span class="d2">章</span></h1>
       <div class="gold-line"></div>
       <p class="page-intro">简介、荣誉与联系方式。</p>
     </div>
@@ -35,7 +37,7 @@
   <section style="padding-top:20px;">
     <div class="container clef-watermark">
       <div class="about-grid">
-        <div class="about-photo"><img src="images/portrait.jpg" alt="Franz Zhong"></div>
+        <div class="about-photo"><img loading="lazy" src="images/portrait.jpg" alt="Franz Zhong"></div>
         <div class="about-bio">
           <p style="font-family:'Noto Serif SC',serif;font-size:17px;line-height:2.2;text-align:center;">
             琴键只有黑白两色，<br>
@@ -145,7 +147,7 @@
 
   <footer class="footer">
     <div class="container">
-      <img src="images/footer-liszt.svg" alt="" class="footer-score">
+      <img loading="lazy" src="images/footer-liszt.svg" alt="" class="footer-score">
       <p class="footer-copy">© 2026 FRANZ ZHONG · PIANIST &amp; MUSIC EDUCATOR</p>
     </div>
   </footer>
