@@ -483,7 +483,7 @@ html:not(.pre-anim) .hero-tagline {
     "c d e"
     "q2 q2 q2"
     "q2a q2a q2a"
-    "f g .";
+    "f g h";
   row-gap: 18px;
   column-gap: 22px;
 }
@@ -497,6 +497,7 @@ html:not(.pre-anim) .hero-tagline {
 .area-e { grid-area: e; }
 .area-f { grid-area: f; }
 .area-g { grid-area: g; }
+.area-h { grid-area: h; }
 .area-q { grid-area: q; margin-top: 30px; }
 .area-qa { grid-area: qa; margin-bottom: 24px; }
 .area-q2 { grid-area: q2; margin-top: 30px; }
@@ -1237,7 +1238,8 @@ img[src$=".svg"] { background-color: transparent; }
       "q2"
       "q2a"
       "f"
-      "g";
+      "g"
+      "h";
   }
   .works-grid { grid-template-columns: 1fr; }
   .resource-row { grid-template-columns: 1fr; }
