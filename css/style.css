@@ -897,7 +897,7 @@ html:not(.pre-anim) .hero-tagline {
   line-height: 1.15;
   letter-spacing: 0.08em;
   color: var(--gold-deep);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .footer-stats-label {
@@ -1268,4 +1268,152 @@ img[src$=".svg"] { background-color: transparent; }
   .resource-row { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .award-item { gap: 20px; }
+}
+
+/* ---------- 开场加载页 ---------- */
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  text-align: center;
+  transition: opacity 0.85s ease, visibility 0s linear 0.85s;
+  /* 兜底：万一脚本整段没跑起来，7 秒后自己让开，内容不会被永久挡死 */
+  animation: splashFallback 0.85s ease 7s forwards;
+}
+
+.splash.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 本次会话已看过，头部脚本给 html 挂上这个类，一帧都不闪 */
+.splash-skip .splash {
+  display: none;
+}
+
+@keyframes splashFallback {
+  to { opacity: 0; visibility: hidden; }
+}
+
+.splash-inner {
+  width: min(560px, 84%);
+}
+
+.splash-brand {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(26px, 4.8vw, 42px);
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: var(--ink);
+}
+
+.splash-rule {
+  display: block;
+  width: 64px;
+  height: 1px;
+  margin: 24px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold) 75%, transparent);
+}
+
+/* 名言轮播：网格叠放，容器高度取最长一条，切换时不跳版 */
+.splash-quotes {
+  display: grid;
+  align-items: center;
+  min-height: 128px;
+  margin-top: 52px;
+}
+
+.splash-quote {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.splash-quote.is-on {
+  opacity: 1;
+}
+
+.splash-quote-text {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(17px, 2.3vw, 23px);
+  line-height: 1.75;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.splash-quote-author {
+  margin-top: 14px;
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  color: var(--gold-deep);
+}
+
+/* 五线谱进度条：五条淡金细线打底，金色线条从左往右长出来 */
+.splash-score {
+  position: relative;
+  width: min(280px, 62%);
+  height: 17px;
+  margin: 58px auto 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--line) 0, var(--line) 1px,
+    transparent 1px, transparent 4px
+  );
+}
+
+.splash-score-fill {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--gold) 0, var(--gold) 1px,
+    transparent 1px, transparent 4px
+  );
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.2s linear;
+}
+
+.splash-visits {
+  margin-top: 30px;
+}
+
+.splash-visits-num {
+  display: block;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: clamp(24px, 3.8vw, 34px);
+  letter-spacing: 0.1em;
+  text-indent: 0.1em;
+  color: var(--gold-deep);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.splash-visits-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 10px;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .splash-quotes { min-height: 150px; margin-top: 42px; }
+  .splash-score { margin-top: 46px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash,
+  .splash-quote,
+  .splash-score-fill { transition: none; }
 }

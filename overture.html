@@ -28,11 +28,87 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="css/style.css?v=22">
+  <link rel="stylesheet" href="css/style.css?v=23">
   <link rel="preload" as="image" href="images/hero.jpg" fetchpriority="high">
   <script>document.documentElement.classList.add('pre-anim');</script>
+  <script>
+    // 本次会话已经看过开场加载页就直接跳过，一帧都不闪
+    try {
+      if (sessionStorage.getItem('prelude-splash') === '1' && !/[?&]splash=1/.test(location.search)) {
+        document.documentElement.classList.add('splash-skip');
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body class="photo-nav photo-nav--warm">
+
+  <!-- 开场加载页：等本页的图就绪后淡出，一次会话只出现一次；带 ?splash=1 可强制重看 -->
+  <div class="splash" id="splash">
+    <div class="splash-inner">
+      <p class="splash-brand">FRANZ ZHONG</p>
+      <span class="splash-rule"></span>
+
+      <div class="splash-quotes">
+        <figure class="splash-quote">
+          <p class="splash-quote-text">The notes I handle no better than many pianists. But the pauses between the notes, ah, that is where the art resides.</p>
+          <figcaption class="splash-quote-author">ARTUR SCHNABEL</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">The music is not in the notes, but in the silence between.</p>
+          <figcaption class="splash-quote-author">MOZART</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">Simplicity is the highest goal, achievable when you have overcome all difficulties.</p>
+          <figcaption class="splash-quote-author">CHOPIN</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">To send light into the darkness of men's hearts, such is the duty of the artist.</p>
+          <figcaption class="splash-quote-author">SCHUMANN</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">Music is a higher revelation than all wisdom and philosophy.</p>
+          <figcaption class="splash-quote-author">BEETHOVEN</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">Music is the language of the spirit.</p>
+          <figcaption class="splash-quote-author">HOROWITZ</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">Where words fail, music speaks.</p>
+          <figcaption class="splash-quote-author">ANDERSEN</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">Music is the shorthand of emotion.</p>
+          <figcaption class="splash-quote-author">TOLSTOY</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">Without music, life would be a mistake.</p>
+          <figcaption class="splash-quote-author">NIETZSCHE</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">Music expresses that which cannot be said and on which it is impossible to be silent.</p>
+          <figcaption class="splash-quote-author">VICTOR HUGO</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">Play always as if in the presence of a master.</p>
+          <figcaption class="splash-quote-author">SCHUMANN</figcaption>
+        </figure>
+        <figure class="splash-quote">
+          <p class="splash-quote-text">Without craftsmanship, inspiration is a mere reed shaken in the wind.</p>
+          <figcaption class="splash-quote-author">BRAHMS</figcaption>
+        </figure>
+      </div>
+
+      <div class="splash-score">
+        <span class="splash-score-fill" id="splash-score-fill"></span>
+      </div>
+
+      <p class="splash-visits">
+        <span class="splash-visits-num" id="splash-visits">1,343,455</span>
+        <span class="splash-visits-label">累计人气 · POPULARITY</span>
+      </p>
+    </div>
+  </div>
 
   <nav class="nav">
     <div class="nav-inner">
