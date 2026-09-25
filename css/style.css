@@ -886,6 +886,28 @@ html:not(.pre-anim) .hero-tagline {
   color: var(--ink-soft);
 }
 
+/* 页脚人气计数，数字由 js/site.js 本地推算 */
+.footer-stats {
+  position: relative;
+  margin-top: 30px;
+}
+
+.footer-stats-num {
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: 0.08em;
+  color: var(--gold-deep);
+  font-variant-numeric: tabular-nums;
+}
+
+.footer-stats-label {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
 /* 页脚旋律五线谱 */
 .footer-score {
   width: min(340px, 78%);
