@@ -70,10 +70,7 @@ function preludeVisits() {
   }
 
   var fill = document.getElementById('splash-score-fill');
-  var MIN_MS = 2600;  // 最短停留，太快显得仓促
-  var start = new Date().getTime();
   var released = false;
-  var ticker = null;
   var quoter = null;
 
   // 要等的图：本页所有 img，外加 head 里 preload 的首屏背景图（它不进 document.images）
@@ -90,18 +87,15 @@ function preludeVisits() {
   var total = watched.length || 1;
   var loaded = 0;
 
-  // 真实进度和时间进度取慢的那个，资产没齐时最多走到 92%，剩下的留给放行那一下
+  // 进度就是真实加载比例，不掺任何时间成分
   function paint() {
     if (!fill || released) return;
-    var byTime = Math.min(1, (new Date().getTime() - start) / MIN_MS);
-    var byAsset = loaded / total;
-    fill.style.transform = 'scaleX(' + (Math.min(byTime, byAsset) * 0.92) + ')';
+    fill.style.transform = 'scaleX(' + (loaded / total) + ')';
   }
 
   function release() {
     if (released) return;
     released = true;
-    if (ticker) clearInterval(ticker);
     if (quoter) clearInterval(quoter);
     if (fill) fill.style.transform = 'scaleX(1)';
     try { sessionStorage.setItem('prelude-splash', '1'); } catch (e) {}
@@ -111,13 +105,13 @@ function preludeVisits() {
       setTimeout(function () {
         if (splash.parentNode) splash.parentNode.removeChild(splash);
       }, 900);
-    }, 300);
+    }, 260);
   }
 
   function one() {
     loaded++;
     paint();
-    if (!released && loaded >= total && new Date().getTime() - start >= MIN_MS) release();
+    if (!released && loaded >= total) release();  // 全部到齐就立刻走
   }
 
   for (i = 0; i < watched.length; i++) {
@@ -145,9 +139,8 @@ function preludeVisits() {
   }
 
   paint();
-  ticker = setInterval(paint, 120);
-  setTimeout(function () {
-    if (!released && loaded >= total) release();
-  }, MIN_MS + 60);
+  // 图片全在缓存里时一个 load 事件都不会来，这里直接放行
+  if (loaded >= total) setTimeout(release, 0);
+  // 硬超时：万一有图一直卡着也放行，剩下的边进边加载，不能把人晾在这
   setTimeout(release, MAX_MS);
 })();
