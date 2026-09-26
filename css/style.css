@@ -74,19 +74,38 @@ img { max-width: 100%; display: block; }
 .nav-links { display: flex; align-items: center; gap: 38px; }
 
 .nav-links a {
+  position: relative;
+  --ls: 0.22em;            /* 字距，下划线尾端要减掉同样一段 */
+  --ul: var(--gold);
   font-size: 14px;
-  letter-spacing: 0.22em;
+  letter-spacing: var(--ls);
   color: var(--ink-soft);
   padding-bottom: 4px;
-  border-bottom: 1px solid transparent;
-  transition: color 0.25s, border-color 0.25s;
+  transition: color 0.25s;
 }
 
-.nav-links a:hover { color: var(--ink); border-color: var(--gold); }
+/* 下划线交给伪元素：字距会在末字后面留一截空隙，
+   用 border-bottom 会把那截一起画上，右边就多出一块 */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: var(--ls);
+  bottom: 0;
+  height: 1px;
+  background: var(--ul);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
 
-.nav-links a.active { color: var(--ink); border-color: var(--gold); }
+.nav-links a:hover,
+.nav-links a.active { color: var(--ink); }
 
-.nav-cta {
+.nav-links a:hover::after,
+.nav-links a.active::after { opacity: 1; }
+
+/* 联系我：实心按钮，不参与下划线那套 */
+.nav-links .nav-cta {
   font-size: 13px;
   letter-spacing: 0.18em;
   color: var(--ink);
@@ -95,7 +114,9 @@ img { max-width: 100%; display: block; }
   transition: background 0.3s, color 0.3s;
 }
 
-.nav-cta:hover { background: var(--gold); color: var(--paper); }
+.nav-links .nav-cta::after { content: none; }
+
+.nav-links .nav-cta:hover { background: var(--gold); color: var(--paper); }
 
 /* 滚动后导航浮现暖白背景（site.js 切换 nav-solid） */
 .nav-solid {
@@ -105,9 +126,8 @@ img { max-width: 100%; display: block; }
 
 .nav-solid a { color: var(--ink-soft); }
 
-.nav-solid a:hover { color: var(--ink); border-color: var(--gold); }
-
-.nav-solid a.active { color: var(--ink); border-color: var(--gold); }
+.nav-solid a:hover,
+.nav-solid a.active { color: var(--ink); }
 
 .nav-solid .nav-cta {
   color: var(--ink);
@@ -118,22 +138,36 @@ img { max-width: 100%; display: block; }
 
 .nav-solid .brand { color: var(--ink); }
 
-/* 作品页：首屏导航深色毛玻璃，白字压照片，滚动后浮现 */
+/* 导航浮在首屏照片之上。用 fixed 脱开文档流，否则它是规规矩矩排在照片
+   上方的，底下的暗纱渐变会在交界处拉出一条硬边。首屏自身的内边距
+   （hero 140px、page-hero--photo 190px）都够高，不用另外补。 */
+.photo-nav .nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+/* 首屏导航化在照片上：不用实心色带，改用自上而下的暗纱。
+   色带是跟着底下的像素变色的，压在亮处就发灰发闷；暗纱不会，
+   照片还能一路顶到页面上沿。滚动后由 nav-solid 换成纸色实底。 */
 .photo-nav.photo-nav--warm .nav {
-  background: rgba(58, 32, 14, 0.38);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: linear-gradient(
+    to bottom,
+    rgba(38, 20, 6, 0.66) 0%,
+    rgba(38, 20, 6, 0.42) 55%,
+    rgba(38, 20, 6, 0) 100%
+  );
   border-bottom-color: transparent;
 }
 
 .photo-nav.photo-nav--warm .nav a {
   color: rgba(250, 248, 244, 0.95);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  --ul: rgba(250, 248, 244, 0.6);
 }
 
-.photo-nav.photo-nav--warm .nav a:hover { color: var(--paper); border-color: rgba(250, 248, 244, 0.6); }
-
-.photo-nav.photo-nav--warm .nav a.active { color: var(--paper); border-color: rgba(250, 248, 244, 0.6); }
+.photo-nav.photo-nav--warm .nav a:hover,
+.photo-nav.photo-nav--warm .nav a.active { color: var(--paper); }
 
 .photo-nav.photo-nav--warm .nav .nav-cta {
   color: var(--paper);
@@ -152,11 +186,13 @@ img { max-width: 100%; display: block; }
   border-bottom-color: var(--line);
 }
 
-.photo-nav.photo-nav--warm .nav.nav-solid a { color: var(--ink-soft); }
+.photo-nav.photo-nav--warm .nav.nav-solid a {
+  color: var(--ink-soft);
+  --ul: var(--gold);
+}
 
-.photo-nav.photo-nav--warm .nav.nav-solid a:hover { color: var(--ink); border-color: var(--gold); }
-
-.photo-nav.photo-nav--warm .nav.nav-solid a.active { color: var(--ink); border-color: var(--gold); }
+.photo-nav.photo-nav--warm .nav.nav-solid a:hover,
+.photo-nav.photo-nav--warm .nav.nav-solid a.active { color: var(--ink); }
 
 .photo-nav.photo-nav--warm .nav.nav-solid .nav-cta {
   color: var(--ink);
@@ -168,20 +204,23 @@ img { max-width: 100%; display: block; }
 .photo-nav.photo-nav--warm .nav.nav-solid .brand { color: var(--ink); }
 
 .photo-nav .nav {
-  background: rgba(12, 12, 10, 0.28);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 9, 0.62) 0%,
+    rgba(10, 10, 9, 0.38) 55%,
+    rgba(10, 10, 9, 0) 100%
+  );
   border-bottom-color: transparent;
 }
 
 .photo-nav .nav a {
   color: rgba(250, 248, 244, 0.95);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+  --ul: rgba(250, 248, 244, 0.6);
 }
 
-.photo-nav .nav a:hover { color: var(--paper); border-color: rgba(250, 248, 244, 0.6); }
-
-.photo-nav .nav a.active { color: var(--paper); border-color: rgba(250, 248, 244, 0.6); }
+.photo-nav .nav a:hover,
+.photo-nav .nav a.active { color: var(--paper); }
 
 .photo-nav .nav .nav-cta {
   color: var(--paper);
@@ -200,11 +239,13 @@ img { max-width: 100%; display: block; }
   border-bottom-color: var(--line);
 }
 
-.photo-nav .nav.nav-solid a { color: var(--ink-soft); }
+.photo-nav .nav.nav-solid a {
+  color: var(--ink-soft);
+  --ul: var(--gold);
+}
 
-.photo-nav .nav.nav-solid a:hover { color: var(--ink); border-color: var(--gold); }
-
-.photo-nav .nav.nav-solid a.active { color: var(--ink); border-color: var(--gold); }
+.photo-nav .nav.nav-solid a:hover,
+.photo-nav .nav.nav-solid a.active { color: var(--ink); }
 
 .photo-nav .nav.nav-solid .nav-cta {
   color: var(--ink);
@@ -908,11 +949,11 @@ html:not(.pre-anim) .hero-tagline {
   opacity: 0.7;
 }
 
-/* 万 / 亿 的单位字，收小一点，不跟主数字抢 */
+/* w / e 的单位字，收小一点，不跟主数字抢 */
 .visit-unit {
-  font-size: 0.6em;
+  font-size: 0.7em;
   font-style: normal;
-  margin-left: 0.14em;
+  margin-left: 0.1em;
   letter-spacing: 0.06em;
 }
 
@@ -1253,8 +1294,10 @@ img[src$=".svg"] { background-color: transparent; }
 /* ---------- 响应式 ---------- */
 
 @media (max-width: 900px) {
-  .nav-inner { flex-direction: column; gap: 16px; }
-  .nav-links { gap: 24px; }
+  .nav-inner { flex-direction: column; gap: 12px; padding: 14px 20px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 13px; --ls: 0.16em; }
+  .nav-links .nav-cta { font-size: 12px; letter-spacing: 0.14em; padding: 6px 16px; }
   section { padding: 64px 0; }
   .photo-wall {
     grid-template-columns: 1fr;

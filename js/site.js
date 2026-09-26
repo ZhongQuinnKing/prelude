@@ -43,16 +43,16 @@ function preludeVisits() {
   return total;
 }
 
-// 上万的收着写，不把六位数挨个铺出来：134.5万 / 1.2亿
+// 上万的收着写，不把六位数挨个铺出来：134.5w / 1.2e
 function visitsText(n) {
   var unit = '';
   var v;
   if (n >= 100000000) {
     v = (n / 100000000).toFixed(1);
-    unit = '亿';
+    unit = 'e';
   } else if (n >= 10000) {
     v = (n / 10000).toFixed(1);
-    unit = '万';
+    unit = 'w';
   } else {
     v = String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
