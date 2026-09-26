@@ -1308,6 +1308,28 @@ img[src$=".svg"] { background-color: transparent; }
     padding-left: 0.2em;
   }
   html:not(.pre-anim) .hero-rule { margin: 28px auto; }
+  /* 作品页首屏那张照片人物贴着画面天头（距顶边仅一成），手机端导航浮上去
+     正好压住整张脸。这一页手机端改回不浮，导航回到纸色实底、照片从下方开始。
+     首页那张演出照有留白，继续浮着。 */
+  .photo-nav:not(.photo-nav--warm) .nav {
+    position: sticky;
+    background: rgba(250, 248, 244, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom-color: var(--line);
+  }
+  .photo-nav:not(.photo-nav--warm) .nav a {
+    color: var(--ink-soft);
+    text-shadow: none;
+    --ul: var(--gold);
+  }
+  .photo-nav:not(.photo-nav--warm) .nav a.nav-cta {
+    color: var(--ink);
+    border-color: var(--gold);
+  }
+  .photo-nav:not(.photo-nav--warm) .nav .brand {
+    color: var(--ink);
+    text-shadow: none;
+  }
   section { padding: 64px 0; }
   .photo-wall {
     grid-template-columns: 1fr;
