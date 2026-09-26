@@ -1330,6 +1330,11 @@ img[src$=".svg"] { background-color: transparent; }
     color: var(--ink);
     text-shadow: none;
   }
+  /* 同一张照片，手机窄屏只取中间约一半宽，原值 50% 把人物挤在最左边缘、头快出画。
+     数字越小视角越往左，人物越回到画面里。 */
+  .photo-nav:not(.photo-nav--warm) .page-hero--photo {
+    background-position: 20% 35%;
+  }
   section { padding: 64px 0; }
   .photo-wall {
     grid-template-columns: 1fr;
