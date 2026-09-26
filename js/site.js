@@ -43,12 +43,28 @@ function preludeVisits() {
   return total;
 }
 
+// 上万的收着写，不把六位数挨个铺出来：134.5万 / 1.2亿
+function visitsText(n) {
+  var unit = '';
+  var v;
+  if (n >= 100000000) {
+    v = (n / 100000000).toFixed(1);
+    unit = '亿';
+  } else if (n >= 10000) {
+    v = (n / 10000).toFixed(1);
+    unit = '万';
+  } else {
+    v = String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+  return unit ? v + '<span class="visit-unit">' + unit + '</span>' : v;
+}
+
 (function () {
-  var text = String(preludeVisits()).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  var html = visitsText(preludeVisits());
   var ids = ['site-visits', 'splash-visits'];
   for (var i = 0; i < ids.length; i++) {
     var el = document.getElementById(ids[i]);
-    if (el) el.textContent = text;
+    if (el) el.innerHTML = html;  // 内容由本文件生成，不含任何外部输入
   }
 })();
 

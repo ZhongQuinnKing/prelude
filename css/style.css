@@ -908,6 +908,14 @@ html:not(.pre-anim) .hero-tagline {
   opacity: 0.7;
 }
 
+/* 万 / 亿 的单位字，收小一点，不跟主数字抢 */
+.visit-unit {
+  font-size: 0.6em;
+  font-style: normal;
+  margin-left: 0.14em;
+  letter-spacing: 0.06em;
+}
+
 /* 页脚旋律五线谱 */
 .footer-score {
   width: min(340px, 78%);
