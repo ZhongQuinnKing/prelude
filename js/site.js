@@ -72,14 +72,13 @@ function visitsText(n) {
 // 三重保险：图片加载失败也计数、4.2 秒硬超时、样式里还有 7 秒兜底动画
 (function () {
   var splash = document.getElementById('splash');
-  var skipped = document.documentElement.className.indexOf('splash-skip') !== -1;
   var MAX_MS = 4200;  // 硬超时，网再慢也放行
 
   // hero 文字的最终兜底：不管下面走哪条路，文字都不会永久藏着
   setTimeout(playHeroAnim, MAX_MS + 2200);
 
-  // 本次会话已看过加载页，或者这页根本没有加载页：hero 动画照常立即播
-  if (!splash || skipped) {
+  // 这页没有加载页（opus/maestro/movement）：hero 动画照常立即播
+  if (!splash) {
     document.addEventListener('DOMContentLoaded', playHeroAnim);
     setTimeout(playHeroAnim, 800);
     return;
@@ -114,7 +113,6 @@ function visitsText(n) {
     released = true;
     if (quoter) clearInterval(quoter);
     if (fill) fill.style.transform = 'scaleX(1)';
-    try { sessionStorage.setItem('prelude-splash', '1'); } catch (e) {}
     setTimeout(function () {
       playHeroAnim();               // 帘子拉开的同时，首页文字浮现
       splash.className = 'splash is-done';
