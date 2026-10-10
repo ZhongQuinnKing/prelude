@@ -927,6 +927,16 @@ html:not(.pre-anim) .hero-tagline {
   color: var(--ink-soft);
 }
 
+/* 页脚许可行，跟在版权行下，弱化处理 */
+.footer-license {
+  position: relative;
+  margin-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+  opacity: 0.72;
+}
+
 /* 页脚人气计数，数字由 js/site.js 本地推算 */
 .footer-stats {
   position: relative;
